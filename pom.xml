@@ -24,7 +24,8 @@
 		<spring-boot.version>2.7.18</spring-boot.version>
 		<druid.version>1.1.24</druid.version>
 		<mybatis-boot-starter.version>2.3.2</mybatis-boot-starter.version>
-		<mysql-connector-java>8.0.33</mysql-connector-java>
+		<postgresql.version>42.7.13</postgresql.version>
+		<guava.version>33.5.0-jre</guava.version>
 		<maven-compiler-plugin.version>3.15.0</maven-compiler-plugin.version>
 	</properties>
 
@@ -53,18 +54,27 @@
 				<version>${druid.version}</version>
 			</dependency>
 
-			<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
-			<dependency>
-				<groupId>com.mysql</groupId>
-				<artifactId>mysql-connector-j</artifactId>
-				<version>${mysql-connector-java}</version>
-			</dependency>
 
 			<!-- https://mvnrepository.com/artifact/com.xuxueli/xxl-job-core -->
 			<dependency>
 				<groupId>com.xuxueli</groupId>
 				<artifactId>xxl-job-core</artifactId>
 				<version>${xxl-job.version}</version>
+			</dependency>
+
+			<!-- Source: https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+			<dependency>
+				<groupId>org.postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${postgresql.version}</version>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+				<scope>compile</scope>
 			</dependency>
 
 		</dependencies>
@@ -113,11 +123,20 @@
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 		</dependency>
-		<!-- mysql -->
+
+		<!-- PostgreSQL -->
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>compile</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<scope>compile</scope>
+		</dependency>
+
 
 		<!-- xxl-job-core -->
 		<dependency>
