@@ -30,7 +30,7 @@ services:
       - DB_USERNAME=
       - DB_PASSWORD=
       - ACCESS_TOKEN=
-      - JAVA_OPTS=-Xms512m -Xmx512m -XX:+UseG1GC -XX:CICompilerCount=2 -XX:MaxDirectMemorySize=128m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=256m -Xss256k -XX:MaxGCPauseMillis=100 -XX:G1HeapRegionSize=2m -XX:+UseStringDeduplication -XX:+ParallelRefProcEnabled -Xlog:gc:/java/logs/gc/gc-xxljob-admin.log:time:filecount=5,filesize=50M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/java/logs/heap-dumps/xxljob-admin.hprof
+      - JAVA_OPTS=-Xms512m -Xmx512m -XX:+UseG1GC -XX:MaxGCPauseMillis=200 -XX:+UseStringDeduplication -XX:+ParallelRefProcEnabled -Xlog:gc:/java/logs/gc/gc-xxljob-admin.log:time:filecount=5,filesize=50M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/java/logs/heap-dumps/xxljob-admin.hprof
     ports:
       - "8060:8060"
     volumes:
