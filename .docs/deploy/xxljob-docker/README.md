@@ -26,7 +26,7 @@ services:
     restart: always
     environment:
       - TZ=Asia/Shanghai
-      - DB_URL=jdbc:mysql://mysql:3306/xxl_job?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useUnicode=true&useSSL=false&allowPublicKeyRetrieval=true
+      - DB_URL=jdbc:postgresql://postgresql:5432/test_db
       - DB_USERNAME=
       - DB_PASSWORD=
       - ACCESS_TOKEN=
@@ -43,6 +43,13 @@ networks:
     external: true
 
 ```
+
+数据库配置说明：
+
+- `DB_URL` 格式为 `jdbc:postgresql://<host>:5432/<database>`，示例中的 PostgreSQL 主机名为 `postgresql`、数据库名为 `test_db`，请按实际环境替换。
+- 启动前使用 [PostgreSQL 初始化脚本](../tables_xxl_job.sql) 在目标数据库中完成全新初始化。
+- 应用固定使用 `app` 模式；Druid 创建物理连接时会执行 `SET search_path TO app`，因此 JDBC URL 无需重复指定 schema 参数。
+- `DB_USERNAME` 对应的数据库用户需要具有 `app` 模式的 `USAGE` 权限，以及 XXL-JOB 表和 sequence 的运行权限。
 
 #### 3.2. 运行
 
